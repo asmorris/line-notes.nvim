@@ -20,11 +20,34 @@ Using `lazy.nvim`:
 
 ```lua
 {
-      "asmorris/line_notes.nvim",
-      dependencies = { "nvim-telescope/telescope.nvim"  },
-      config = function()
-        -- Optional: Set custom key mappings here
-          end
-
+    "asmorris/line_notes.nvim",
+    dependencies = { "nvim-telescope/telescope.nvim" },
+    config = function()
+        require('line_notes').setup({
+            -- Optional: Add your custom configuration here
+        })
+    end
 }
+```
+
+## Default Configuration
+
+The plugin comes with sensible defaults, but you can customize them to your liking. Here's the default configuration:
+
+```lua
+require('line_notes').setup({
+    -- Customize keymaps
+    keymaps = {
+        add_note = "an",    -- Add a new note
+        list_notes = "ln",  -- Open telescope picker with all notes
+        delete_note = "dn", -- Delete note on current line
+        show_note = "sn"    -- Show/edit note on current line
+    },
+    -- Customize note appearance
+    signs = {
+        note_icon = "🗒️",         -- Icon shown in the sign column
+        highlight = "Comment",     -- Highlight group for the icon
+        number_highlight = ""      -- Highlight group for line numbers (empty for no highlight)
+    }
+})
 ```
